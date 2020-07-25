@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+body h1 {
+    margin-top: 20px;
+}
+
+
+.calculator {
+    width: 300px;
+    height: 500px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 50px auto;
+    background: rgb(25, 25, 25);
+    background: linear-gradient(0deg, rgba(25, 25, 25, 1) 0%, rgba(0, 0, 0, 1) 100%);
+}
+
+.calculator hr {
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid gray;
+}
+
+.display {
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+.display p {
+    margin: 20px;
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+.equation-display {
+    height: 60px;
+    font-size: 20px;
+    color: lightgray;
+}
+
+
+.result-display {
+    height: 60px;
+    font-size: 26px;
+    color: white;
+}
+
+.buttons {
+    height: 65%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.btn {
+    justify-self: center;
+    align-self: center;
+    color: white;
+    font-size: 26px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* .btn button {
+    position: absolute;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+} */
