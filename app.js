@@ -1,4 +1,10 @@
-
+//variables
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-operation]');
+const equalsButton = document.querySelector('[data-equals]');
+const clearButton = document.querySelector('[data-clear]');
+const equationValue = document.querySelector('.equation');
+const resultValue = document.querySelector('.result');
 
 //calculator functions
 
@@ -25,7 +31,7 @@ function operate(operator, firstNumber, secondNumber) {
             return add(firstNumber, secondNumber);
         case '-':
             return subtract(firstNumber, secondNumber);
-        case '*':
+        case 'x':
             return multiply(firstNumber, secondNumber);
         case '/':
             return divide(firstNumber, secondNumber);
