@@ -1,4 +1,7 @@
 //variables
+
+let displayValue = '';
+
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
@@ -28,14 +31,55 @@ function divide(a, b) {
 function operate(operator, firstNumber, secondNumber) {
     switch (operator) {
         case '+':
-            return add(firstNumber, secondNumber);
+            displayValue = add(firstNumber, secondNumber);
+            updateDisplay();
+            break;
         case '-':
-            return subtract(firstNumber, secondNumber);
-        case 'x':
-            return multiply(firstNumber, secondNumber);
+            displayValue = subtract(firstNumber, secondNumber);
+            updateDisplay();
+            break;
+        case 'X':
+            displayValue = multiply(firstNumber, secondNumber);
+            updateDisplay();
+            break;
         case '/':
-            return divide(firstNumber, secondNumber);
+            displayValue = divide(firstNumber, secondNumber);
+            updateDisplay();
+            break;
         default:
             alert("Wrong operator");
     }
 }
+
+
+
+function updateDisplay() {
+    equationValue.innerHTML = `${displayValue}`;
+}
+function clearDisplay() {
+    equationValue.innerHTML = '';
+    resultValue.innerHTML = '';
+    displayValue = '';
+}
+
+Array.from(numberButtons).forEach(number =>
+    number.addEventListener('click', () => {
+        displayValue += number.textContent;
+        updateDisplay();
+    }))
+
+
+Array.from(operationButtons).forEach(operation => {
+    operation.addEventListener('click', () => {
+        displayValue += ` ${operation.textContent} `;
+        updateDisplay();
+    })
+})
+
+function calculate() {
+    const values = displayValue.split(' ');
+    operate(values[1], parseInt(values[0], 10), parseInt(values[2], 10));
+}
+
+equalsButton.addEventListener('click', calculate)
+clearButton.addEventListener('click', clearDisplay)
