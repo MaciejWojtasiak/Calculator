@@ -1,6 +1,6 @@
 //variables
 
-// let equationDisplay = '';
+
 let result = '';
 let operationPressed = false;
 
@@ -9,7 +9,6 @@ const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
 const cleanButton = document.querySelector('[data-clean]');
 const clearButton = document.querySelector('[data-clear]');
-// const equationValue = document.querySelector('.equation');
 const resultValue = document.querySelector('.result');
 
 
@@ -64,13 +63,10 @@ function calculate() {
 
 
 function updateDisplay() {
-    // equationValue.innerHTML = `${equationDisplay}`;
     resultValue.innerHTML = `${result}`;
 }
 function cleanDisplay() {
-    // equationValue.innerHTML = '';
     resultValue.innerHTML = '';
-    // equationDisplay = '';
     result = '';
 }
 
@@ -97,4 +93,3 @@ Array.from(operationButtons).forEach(operation => {
 
 equalsButton.addEventListener('click', calculate)
 cleanButton.addEventListener('click', cleanDisplay)
-// clearButton.addEventListener('click', clearOneValue)

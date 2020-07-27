@@ -17,7 +17,6 @@ body {
     height: 600px;
     border-radius: 10px;
     margin: 50px auto;
-    /* background: rgb(0, 0, 0); */
     background: linear-gradient(0deg, rgba(38, 38, 38, 1) 0%, rgba(65, 65, 65, 1) 100%);
 }
 
@@ -28,7 +27,7 @@ body {
 }
 
 .display {
-    height: 35%;
+    min-height: 35%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -39,18 +38,7 @@ body {
     margin: 20px;
     text-align: left;
     letter-spacing: 1px;
-}
-
-.equation-display {
-    height: 60px;
-    font-size: 20px;
-    color: lightgray;
-}
-
-
-.result-display {
-    height: 60px;
-    font-size: 26px;
+    font-size: 45px;
     color: white;
 }
 
