@@ -1,13 +1,17 @@
 //variables
 
-let displayValue = '';
+// let equationDisplay = '';
+let result = '';
+let operationPressed = false;
 
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
+const cleanButton = document.querySelector('[data-clean]');
 const clearButton = document.querySelector('[data-clear]');
-const equationValue = document.querySelector('.equation');
+// const equationValue = document.querySelector('.equation');
 const resultValue = document.querySelector('.result');
+
 
 //calculator functions
 
@@ -31,19 +35,19 @@ function divide(a, b) {
 function operate(operator, firstNumber, secondNumber) {
     switch (operator) {
         case '+':
-            displayValue = add(firstNumber, secondNumber);
+            result = add(firstNumber, secondNumber);
             updateDisplay();
             break;
         case '-':
-            displayValue = subtract(firstNumber, secondNumber);
+            result = subtract(firstNumber, secondNumber);
             updateDisplay();
             break;
         case 'X':
-            displayValue = multiply(firstNumber, secondNumber);
+            result = multiply(firstNumber, secondNumber);
             updateDisplay();
             break;
         case '/':
-            displayValue = divide(firstNumber, secondNumber);
+            result = divide(firstNumber, secondNumber);
             updateDisplay();
             break;
         default:
@@ -51,35 +55,46 @@ function operate(operator, firstNumber, secondNumber) {
     }
 }
 
+function calculate() {
+    const values = result.split(' ');
+    operate(values[1], parseInt(values[0], 10), parseInt(values[2], 10));
+}
+
+//display functions
 
 
 function updateDisplay() {
-    equationValue.innerHTML = `${displayValue}`;
+    // equationValue.innerHTML = `${equationDisplay}`;
+    resultValue.innerHTML = `${result}`;
 }
-function clearDisplay() {
-    equationValue.innerHTML = '';
+function cleanDisplay() {
+    // equationValue.innerHTML = '';
     resultValue.innerHTML = '';
-    displayValue = '';
+    // equationDisplay = '';
+    result = '';
 }
+
+//buttons listeners
 
 Array.from(numberButtons).forEach(number =>
     number.addEventListener('click', () => {
-        displayValue += number.textContent;
+        result += number.textContent;
+        operationPressed = false;
         updateDisplay();
     }))
 
 
 Array.from(operationButtons).forEach(operation => {
     operation.addEventListener('click', () => {
-        displayValue += ` ${operation.textContent} `;
+        if (operationPressed === true) return;
+        result += ` ${operation.textContent} `;
+        operationPressed = true;
         updateDisplay();
     })
 })
 
-function calculate() {
-    const values = displayValue.split(' ');
-    operate(values[1], parseInt(values[0], 10), parseInt(values[2], 10));
-}
+
 
 equalsButton.addEventListener('click', calculate)
-clearButton.addEventListener('click', clearDisplay)
+cleanButton.addEventListener('click', cleanDisplay)
+// clearButton.addEventListener('click', clearOneValue)
