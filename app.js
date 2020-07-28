@@ -37,8 +37,10 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (b === 0) alert("can't divide by 0!");
-    else return a / b;
+    if (b === 0) {
+        alert("can't divide by 0!");
+        clearAll();
+    } else return a / b;
 }
 function modulo(a, b) {
     return a % b;
